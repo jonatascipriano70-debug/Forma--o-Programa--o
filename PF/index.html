@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+    <title>Funko Store</title>
+</head>
+<body>
+    <header>
+        <div class="logo">Funko Store</div>
+<!-- criei para alinhar a area do menu que era teimosa-->
+        <div class="menu-area"></div>
+        
+        <nav>
+            <ul>
+              <!-- 
+                <li><a href="#home">Home</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#contatos">Contatos</a></li>    
+                    </a>
+                </li> 
+              -->
+
+              <!--ligar as pag. -->
+                <li><a href="index.html">Home</a></li>
+        <li><a href="produtos.html">Produtos</a></li>
+        <li><a href="contato.html">Contato</a></li>
+
+            </ul>
+        </nav>
+
+        <div class="carrinho">
+    🛒 <span id="contador">0</span>
+</div>
+
+        <div class="introducao">
+    <h1>"A marca referência em Portugal"!</h1>
+    <h2>Todos os lançamentos em stock</h2>
+    <a href="produtos.html">Ver Catálogo</a>
+</div>
+
+        </div>
+
+    </header>
+
+    <main>
+    <section class="produtos">
+    <div class="card">
+        <span class="badge">NOVO</span>
+        <img src="img/funko1.png" alt="Funko Harry Potter">
+        <h3>Harry Potter</h3>
+        <p>Edição especial colecionável.</p>
+        <p class="preco">€9.99</p>
+        <!-- incluí uma categoria em cada item -->
+       <!--  <div class="card" data-categoria="filme"></div> -->
+         <!-- adicionei um botão para adicionar no carrinho em cada card-->
+         <!-- <button onclick="adicionarCarrinho('Harry Potter')">Adicionar</button>-->
+          <!--direciona o usuario para a pag produtos e add o produto ao carrinho-->
+          <button onclick="comprarDireto('Harry Potter')">Adicionar</button>
+    </div>
+
+    <div class="card">
+        <span class="badge">NOVO</span>
+        <img src="img/Funko3.png" alt="Funko Mike">
+        <h3>Mike</h3>
+        <p>Lançamento exclusivo 2026.</p>
+        <p class="preco">€14.99</p>
+        <!-- <div class="card" data-categoria="filme"></div> -->
+        <!--<button onclick="adicionarCarrinho('Mike')">Adicionar</button>-->
+        <button onclick="comprarDireto('Mike')">Adicionar</button>
+    </div>
+
+    
+
+    <div>
+        <div class="card">
+        <span class="badge">NOVO</span>
+        <img src="img/funko4.png" alt="Funko Luffy">
+        <h3>Luffy</h3>
+        <p>Lançamento exclusivo 2026.</p>
+        <p class="preco">€24.99</p>
+       <!-- <div class="card" data-categoria="anime"></div> -->
+        <!--<button onclick="adicionarCarrinho('Luffy')">Adicionar</button>-->
+        <button onclick="comprarDireto('Luffy')">Adicionar</button>
+    </div>
+</section>
+     </main>   
+   
+     <!-- função comprar para o botão da home-->
+     <script>
+    function comprarDireto(produto){
+        // Guardamos o produto no navegador
+        localStorage.setItem("produtoSelecionado", produto);
+        // Vai para a página dos produtos
+        window.location.href = "produtos.html";
+    }
+</script>
+
+
+
+    <footer><p class="paragrafo-footer">&copy Funko Pop para FÃ de animes - Todos os direitos reservados </p></footer>
+</body>
+</html>

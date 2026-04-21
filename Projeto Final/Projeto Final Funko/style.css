@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: cursive;
+}
+
+body {
+    font-family: cursive margin 0;
+    background-color: rgb(43, 11, 72);
+    /*não deixa aparecer barra de rolagem*/
+    overflow: hidden;
+
+    h1 {
+        margin-top: -80px;
+        /* Valor negativo sobe o elemento */
+        color: rgb(229, 237, 237);
+        text-decoration: none;
+    }
+
+    p {
+        font-size: 16px;
+        color: rgb(229, 237, 237);
+        text-decoration: none;
+    }
+}
+
+header {
+    font-size: 1em;
+    width: 145rem;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 3;
+    color: rgb(34, 178, 178);
+    text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+}
+
+.logo {
+    font-size: 40px;
+    margin-top: -10px;
+}
+
+nav a {
+    color: white;
+    margin: 10px;
+    /*não sublinhar*/
+    text-decoration: none;
+}
+
+
+.home,
+.produtos,
+.contato {
+    padding: 30px;
+    text-align: center;
+}
+
+.btn,
+button {
+    padding: 10px 20px;
+    background: rgb(34, 178, 178);
+    color: rgb(0, 12, 12);
+    border-radius: 45%;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    margin: 15px;
+    display: inline-block;
+    width: 220px;
+}
+
+.card img {
+    width: 100%;
+}
+
+form {
+    max-width: 400px;
+    margin: auto;
+}
+
+input,
+textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+}

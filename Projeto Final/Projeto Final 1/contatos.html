@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatos | Funko Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Funko Store</div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="produtos.html">Produtos</a></li>
+            <li><a href="contatos.html" class="active">Contatos</a></li>
+            <li>
+                <a href="cart.html">🛒 <span id="cart-count">0</span></a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main class="contact">
+
+    <h2>Fale Conosco</h2>
+
+    <!-- FORMULÁRIO DE CONTATO -->
+    <form id="contactForm">
+
+        <input type="text" id="name" placeholder="Nome" required>
+
+        <input type="email" id="email" placeholder="Email" required>
+
+        <textarea id="message" placeholder="Mensagem" required></textarea>
+
+        <button type="submit" class="btn primary">
+            Enviar Mensagem
+        </button>
+
+        <p id="formMsg"></p>
+
+    </form>
+
+</main>
+
+<script src="form.js"></script>
+<script src="scripts.js"></script>
+
+</body>
+</html>

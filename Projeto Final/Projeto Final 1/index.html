@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Funko Store</title>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Funko Store</div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="contatos.html">Contatos</a></li>
+                <li><a href="cart.html">🛒 <span id="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main class="container">
+
+        <div class="tech-circle">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+
+        <!-- LISTA DE PRODUTOS (TODOS DENTRO DA LIST) -->
+        <div class="list">
+
+            <!-- ITEM 1 -->
+            <div class="item active">
+                <div class="product-img">
+                    <img src="./img/funko1.png" alt="Harry Potter">
+                    <button class="btn buy-btn">Comprar</button>
+                </div>
+
+                <div class="content">
+                    <p class="product-tag">Lançamento</p>
+                    <p class="product-name">Funko Harry Potter Limited</p>
+                    <p class="description">
+                        Figura colecionável Funko Pop Licenciado Harry Potter, vinil resistente e detalhes autênticos,
+                        aprox. 10 cm de altura, ideal para fãs e colecionadores.
+                    </p>
+                    <button class="btn primary">Saiba Mais</button>
+                </div>
+            </div>
+
+            <!-- ITEM 2 -->
+            <div class="item">
+                <div class="product-img">
+                    <img src="./img/Funko2.png" alt="Bonnie">
+                    <button class="btn buy-btn">Comprar</button>
+                </div>
+
+                <div class="content">
+                    <p class="product-tag">Lançamento</p>
+                    <p class="product-name">Funko Bonnie Five Nights</p>
+                    <p class="description">
+                        Figura colecionável Funko Pop Licenciado Bonnie, vinil resistente e detalhes autênticos,
+                        aprox. 10 cm de altura.
+                    </p>
+                    <button class="btn primary">Saiba Mais</button>
+                </div>
+            </div>
+
+            <!-- ITEM 3 -->
+            <div class="item">
+                <div class="product-img">
+                    <img src="./img/Funko3.png" alt="Mike">
+                    <button class="btn buy-btn">Comprar</button>
+                </div>
+
+                <div class="content">
+                    <p class="product-tag">Lançamento</p>
+                    <p class="product-name">Funko Mike Limited</p>
+                    <p class="description">
+                        Figura colecionável Funko Pop Licenciado Mike, vinil resistente e detalhes autênticos,
+                        aprox. 10 cm de altura.
+                    </p>
+                    <button class="btn primary">Saiba Mais</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- BOTÕES -->
+        <div class="arrows">
+            <button class="arrow-btn" id="prev">
+                ◀
+            </button>
+            <button class="arrow-btn" id="next">
+                ▶
+            </button>
+        </div>
+
+        <!-- INDICADORES -->
+        <div class="indicators">
+            <div class="numbers">01</div>
+
+            <div class="dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="scripts.js"></script>
+
+
+</body>
+
+</html>

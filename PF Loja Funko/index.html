@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <!-- Aqui dizemos ao navegador informações importantes sobre nossa página -->
+    <meta charset="UTF-8">
+    <!-- Isso faz a página funcionar bem no celular -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- O título que aparece na aba do navegador -->
+    <title>Funko Store - Home</title>
+    <!-- Conectamos nossos arquivos de estilo (CSS) -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO (HEADER) fica no topo com o logo e menu -->
+    <header>
+        <!-- Logo da loja -->
+        <div class="logo">Funko Store</div>
+
+        <!-- MENU DE NAVEGAÇÃO São os links para ir para outras páginas -->
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+
+        <!-- CARRINHO Mostra quantos produtos a pessoa adicionou -->
+        <div class="carrinho">
+            🛒 <span id="contador">0</span>
+        </div>
+
+        <!-- TEXTO DE INTRODUÇÃO Fica no centro da imagem de fundo -->
+        <div class="introducao">
+            <h1>"A marca referência em Portugal"!</h1>
+            <h2>Todos os lançamentos em stock</h2>
+            <!-- linka o botão ver catalogo a pag produtos-->
+            <a href="produtos.html">Ver Catálogo</a>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL Aqui ficam os produtos em destaque -->
+    <main>
+        <section class="produtos">
+
+            <!-- CARD PRODUTO 1 Cada produto fica dentro de um "card" (como um cartão) ou badge conforme ensinado na aula pelo formador João -->
+            <div class="card">
+                <span class="badge">NOVO</span>
+                <img src="img/funko1.png" alt="Funko Harry Potter">
+                <h3>Harry Potter</h3>
+                <p>Edição especial colecionável.</p>
+                <p class="preco">€9.99</p>
+                <button onclick="comprarDireto('Harry Potter')">Adicionar</button>
+            </div>
+
+            <!--CARD PRODUTO 2 -->
+            <div class="card">
+                <span class="badge">NOVO</span>
+                <img src="img/Funko3.png" alt="Funko Mike">
+                <h3>Mike</h3>
+                <p>Lançamento exclusivo 2026.</p>
+                <p class="preco">€14.99</p>
+                <button onclick="comprarDireto('Mike')">Adicionar</button>
+            </div>
+
+            <!-- CARD PRODUTO 3 -->
+            <div class="card">
+                <span class="badge">NOVO</span>
+                <img src="img/funko4.png" alt="Funko Luffy">
+                <h3>Luffy</h3>
+                <p>Lançamento exclusivo 2026.</p>
+                <p class="preco">€24.99</p>
+                <button onclick="comprarDireto('Luffy')">Adicionar</button>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p class="paragrafo-footer">&copy; Funko Store 2026 - Todos os direitos reservados</p>
+    </footer>
+
+    <!-- JAVASCRIPT Aqui fica a "função" da página -->
+    <script>
+        // VARIÁVEIS (guardam informações)
+        // Array = lista de produtos no carrinho (começa vazia)
+        let carrinho = [];
+
+        // Pegamos o número do contador na tela
+        const contador = document.getElementById("contador");
+
+        // FUNÇÃO: COMPRAR DIRETO
+        // Quando clica no botão "Adicionar"
+        function comprarDireto(nomeDoProduto) {
+            // 1. Adiciona o produto na lista do carrinho
+            carrinho.push(nomeDoProduto);
+
+            // 2. Atualiza o número no carrinho
+            contador.textContent = carrinho.length;
+
+            // 3. Mostra uma mensagem para o usuário
+            alert(nomeDoProduto + " foi adicionado ao carrinho!");
+        }
+    </script>
+
+</body>
+
+</html>

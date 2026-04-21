@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - Funko Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="header-pequeno-produtos">
+        <div class="logo">Funko Store</div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+
+        <div class="carrinho">
+            🛒 <span id="contador">0</span>
+        </div>
+    </header>
+
+    <!-- ÁREA DE FILTROS Serve para pesquisar e filtrar produtos-->
+    <section class="filtros">
+        <!-- Caixa para escrever e pesquisar -->
+        <input type="text" id="pesquisa" placeholder="🔍 Pesquisar Funko...">
+
+        <!-- Menu para escolher categoria -->
+        <select id="categoria">
+            <option value="todos">Todas categorias</option>
+            <option value="filme">Filme</option>
+            <option value="anime">Anime</option>
+            <option value="serie">Série</option>
+        </select>
+    </section>
+
+    <!-- LISTA DE PRODUTOS Os produtos aparecem aqui (gerados pelo JavaScript) -->
+    <main class="produtos" id="listaProdutos">
+        <!-- Os produtos serão colocados aqui pelo JavaScript -->
+    </main>
+
+    <!-- MENSAGEM QUANDO NÃO TEM PRODUTOS Aparece quando a pesquisa não encontra nada -->
+    <div id="mensagemVazia" class="mensagem-vazia" style="display: none;">
+        <p>😢 Nenhum produto encontrado</p>
+        <p>Tente pesquisar outro item!</p>
+    </div>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p class="paragrafo-footer">&copy; Funko Store 2026 - Todos os direitos reservados</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // LISTA DE PRODUTOS (dados em memória)
+        // lista de compras com todas as informações
+
+        const produtos = [
+            {
+                id: 1,
+                nome: "Harry Potter",
+                descricao: "Edição especial colecionável.",
+                preco: 9.99,
+                categoria: "filme",
+                imagem: "img/funko1.png",
+                badge: "NOVO"
+            },
+            {
+                id: 2,
+                nome: "Funko Mike",
+                descricao: "Lançamento exclusivo 2026.",
+                preco: 14.99,
+                categoria: "serie",
+                imagem: "img/Funko3.png",
+                badge: "NOVO"
+            },
+            {
+                id: 3,
+                nome: "Funko Luffy",
+                descricao: "Do anime One Piece.",
+                preco: 24.99,
+                categoria: "anime",
+                imagem: "img/funko4.png",
+                badge: "NOVO"
+            },
+            {
+                id: 4,
+                nome: "Batman",
+                descricao: "O cavaleiro das trevas.",
+                preco: 19.99,
+                categoria: "filme",
+                imagem: "img/funko7.png",
+                badge: "PROMO"
+            },
+            {
+                id: 5,
+                nome: "Naruto",
+                descricao: "Ninja de Konoha.",
+                preco: 22.99,
+                categoria: "anime",
+                imagem: "img/funko8.png",
+                badge: "NOVO"
+            },
+            {
+                id: 6,
+                nome: "Eleven",
+                descricao: "Stranger Things.",
+                preco: 18.99,
+                categoria: "serie",
+                imagem: "img/funko9.png",
+                badge: "NOVO"
+            }
+        ];
+
+        // VARIÁVEIS
+        let carrinho = [];
+        const contador = document.getElementById("contador");
+        const pesquisa = document.getElementById("pesquisa");
+        const categoriaSelect = document.getElementById("categoria");
+        const listaProdutos = document.getElementById("listaProdutos");
+        const mensagemVazia = document.getElementById("mensagemVazia");
+
+        // FUNÇÃO: CRIAR CARD DO PRODUTO
+        // Cria o HTML de um card de produto
+        function criarCardProduto(produto) {
+            // Criamos uma "caixa" (div) para o produto
+            const card = document.createElement("div");
+            card.className = "card";
+            card.setAttribute("data-categoria", produto.categoria);
+
+            // Colocamos o conteúdo dentro da caixa
+            card.innerHTML = `
+                <span class="badge">${produto.badge}</span>
+                <img src="${produto.imagem}" alt="${produto.nome}">
+                <h3>${produto.nome}</h3>
+                <p>${produto.descricao}</p>
+                <p class="preco">€${produto.preco.toFixed(2)}</p>
+                <button onclick="adicionarCarrinho('${produto.nome}')">Adicionar</button>
+            `;
+
+            return card;
+        }
+
+        // FUNÇÃO: MOSTRAR PRODUTOS
+        // Mostra os produtos na tela
+        function mostrarProdutos(listaDeProdutos) {
+            // 1. Limpa a lista atual
+            listaProdutos.innerHTML = "";
+
+            // 2. Se não tem produtos, mostra mensagem
+            if (listaDeProdutos.length === 0) {
+                mensagemVazia.style.display = "block";
+                return;
+            }
+
+            // 3. Esconde a mensagem de vazio
+            mensagemVazia.style.display = "none";
+
+            // 4. Para cada produto, cria um card e adiciona na tela
+            listaDeProdutos.forEach(function(produto) {
+                const card = criarCardProduto(produto);
+                listaProdutos.appendChild(card);
+            });
+        }
+
+        // 🔍 FUNÇÃO: FILTRAR PRODUTOS
+        // Filtra por nome e categoria
+        function filtrarProdutos() {
+            // 1. Pega o texto da pesquisa (em minúsculas)
+            const textoPesquisa = pesquisa.value.toLowerCase();
+
+            // 2. Pega a categoria selecionada
+            const categoriaSelecionada = categoriaSelect.value;
+
+            // 3. Filtra a lista de produtos
+            const produtosFiltrados = produtos.filter(function(produto) {
+                // Verifica se o nome contém o texto pesquisado
+                const combinaTexto = produto.nome.toLowerCase().includes(textoPesquisa);
+
+                // Verifica se a categoria combina
+                const combinaCategoria = categoriaSelecionada === "todos" || 
+                                         produto.categoria === categoriaSelecionada;
+
+                // Retorna true se combinar texto E categoria
+                return combinaTexto && combinaCategoria;
+            });
+
+            // 4. Mostra os produtos filtrados
+            mostrarProdutos(produtosFiltrados);
+        }
+
+        // 🛒 FUNÇÃO: ADICIONAR AO CARRINHO
+        // Adiciona um produto no carrinho
+        function adicionarCarrinho(nomeDoProduto) {
+            // 1. Adiciona na lista do carrinho
+            carrinho.push(nomeDoProduto);
+
+            // 2. Atualiza o número no ícone
+            contador.textContent = carrinho.length;
+
+            // 3. Mostra mensagem de sucesso
+            mostrarMensagem(nomeDoProduto + " adicionado ao carrinho!", "sucesso");
+        }
+
+        //  FUNÇÃO: MOSTRAR MENSAGEM
+        // Mostra uma mensagem bonita na tela
+        function mostrarMensagem(texto, tipo) {
+            // Cria uma caixa de mensagem
+            const mensagem = document.createElement("div");
+            mensagem.className = "mensagem-feedback " + tipo;
+            mensagem.textContent = texto;
+
+            // Adiciona no corpo da página
+            document.body.appendChild(mensagem);
+
+            // Remove depois de 3 segundos
+            setTimeout(function() {
+                mensagem.remove();
+            }, 3000);
+        }
+
+        // EVENTOS (quando algo acontece)
+        
+        // Quando digita na pesquisa, filtra os produtos
+        pesquisa.addEventListener("input", filtrarProdutos);
+
+        // Quando muda a categoria, filtra os produtos
+        categoriaSelect.addEventListener("change", filtrarProdutos);
+
+        // INICIAR A PÁGINA
+        // Mostra todos os produtos quando a página carrega
+        mostrarProdutos(produtos);
+    </script>
+
+</body>
+</html>

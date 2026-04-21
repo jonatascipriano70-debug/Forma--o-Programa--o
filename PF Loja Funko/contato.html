@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Funko Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="header-pequeno">
+        <div class="logo">Funko Store</div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+
+        <div class="carrinho">
+            🛒 <span id="contador">0</span>
+        </div>
+    </header>
+
+    <!-- SEÇÃO DO FORMULÁRIO Aqui a pessoa pode enviar uma mensagem -->
+    <section class="secao-contato">
+        <h2>Fale Conosco</h2>
+        <p class="subtitulo">Tem alguma dúvida? Envie-nos uma mensagem!</p>
+
+        <!--  FORMULÁRIO - para o utilizador preencher -->
+        <form id="formulario">
+
+            <!-- Campo do Nome -->
+            <label for="nome">Nome: *</label>
+            <input type="text" id="nome" placeholder="Digite o seu nome" required>
+            <span class="erro" id="erroNome"></span>
+
+            <!-- Campo do Email -->
+            <label for="email">Email: *</label>
+            <input type="email" id="email" placeholder="Digite o seu email" required>
+            <span class="erro" id="erroEmail"></span>
+
+            <!-- Campo do Assunto -->
+            <label for="assunto">Assunto: *</label>
+            <select id="assunto" required>
+                <option value="">Escolha um assunto</option>
+                <option value="duvida">Dúvida sobre produto</option>
+                <option value="encomenda">Problema com encomenda</option>
+                <option value="sugestao">Sugestão</option>
+                <option value="outro">Outro</option>
+            </select>
+            <span class="erro" id="erroAssunto"></span>
+
+            <!-- Campo da Mensagem -->
+            <label for="mensagemTexto">Mensagem: *</label>
+            <textarea id="mensagemTexto" rows="5" placeholder="Escreva a sua mensagem aqui..." required></textarea>
+            <span class="erro" id="erroMensagem"></span>
+
+            <!-- Botão de Enviar -->
+            <button type="submit">Enviar Mensagem</button>
+
+            <!-- Área para mostrar mensagem de sucesso ou erro -->
+            <div id="mensagemFormulario"></div>
+        </form>
+
+        <!-- LISTA DE MENSAGENS ENVIADAS
+            Mostra as mensagens que foram enviadas (guardadas em memória)-->
+        <div class="mensagens-enviadas">
+            <h3>📨 Mensagens Enviadas</h3>
+            <div id="listaMensagens">
+                <p class="nenhuma-mensagem">Nenhuma mensagem enviada.</p>
+            </div>
+        </div>
+    </section>
+
+    <!--RODAPÉ -->
+    <footer>
+        <p class="paragrafo-footer">&copy; Funko Store 2026 - Todos os direitos reservados</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // LISTA DE MENSAGENS (dados em memória)
+        // Guarda todas as mensagens enviadas
+        let mensagens = [];
+
+        //  PEGAMOS OS ELEMENTOS DO HTML
+        const formulario = document.getElementById("formulario");
+        const nomeInput = document.getElementById("nome");
+        const emailInput = document.getElementById("email");
+        const telefoneInput = document.getElementById("telefone");
+        const assuntoSelect = document.getElementById("assunto");
+        const mensagemTexto = document.getElementById("mensagemTexto");
+        const mensagemFormulario = document.getElementById("mensagemFormulario");
+        const listaMensagens = document.getElementById("listaMensagens");
+
+
+        // FUNÇÃO: VALIDAR NOME
+        // Verifica se o nome está correto
+        function validarNome() {
+            const nome = nomeInput.value.trim();
+            const erroNome = document.getElementById("erroNome");
+
+            // Verifica se está vazio
+            if (nome === "") {
+                erroNome.textContent = "Por favor, digite seu nome.";
+                return false;
+            }
+
+            // Verifica se tem pelo menos 3 letras
+            if (nome.length < 3) {
+                erroNome.textContent = "O nome deve ter pelo menos 3 letras.";
+                return false;
+            }
+
+            // Se está tudo bem, limpa o erro
+            erroNome.textContent = "";
+            return true;
+        }
+
+        // FUNÇÃO: VALIDAR EMAIL
+        // Verifica se o email está correto
+        function validarEmail() {
+            const email = emailInput.value.trim();
+            const erroEmail = document.getElementById("erroEmail");
+
+            // Verifica se está vazio
+            if (email === "") {
+                erroEmail.textContent = "Por favor, digite seu email.";
+                return false;
+            }
+
+            // Verifica se parece um email (tem @ e .)
+            if (!email.includes("@") || !email.includes(".")) {
+                erroEmail.textContent = "Digite um email válido (ex: nome@email.com)";
+                return false;
+            }
+
+            // Se está tudo bem, limpa o erro
+            erroEmail.textContent = "";
+            return true;
+        }
+
+        // ✅ FUNÇÃO: VALIDAR ASSUNTO
+        // Verifica se escolheu um assunto
+        function validarAssunto() {
+            const assunto = assuntoSelect.value;
+            const erroAssunto = document.getElementById("erroAssunto");
+
+            if (assunto === "") {
+                erroAssunto.textContent = "Por favor, escolha um assunto.";
+                return false;
+            }
+
+            erroAssunto.textContent = "";
+            return true;
+        }
+
+        // FUNÇÃO: VALIDAR MENSAGEM
+        // Verifica se a mensagem está correta
+        function validarMensagemTexto() {
+            const texto = mensagemTexto.value.trim();
+            const erroMensagem = document.getElementById("erroMensagem");
+
+            if (texto === "") {
+                erroMensagem.textContent = "Por favor, escreva uma mensagem.";
+                return false;
+            }
+
+            if (texto.length < 10) {
+                erroMensagem.textContent = "A mensagem deve ter pelo menos 10 caracteres.";
+                return false;
+            }
+
+            erroMensagem.textContent = "";
+            return true;
+        }
+
+        // FUNÇÃO: MOSTRAR MENSAGENS
+        // Atualiza a lista de mensagens na tela
+        function mostrarMensagens() {
+            // Se não tem mensagens
+            if (mensagens.length === 0) {
+                listaMensagens.innerHTML = '<p class="nenhuma-mensagem">Nenhuma mensagem enviada ainda.</p>';
+                return;
+            }
+
+            // Limpa a lista
+            listaMensagens.innerHTML = "";
+
+            // Para cada mensagem, cria um card
+            mensagens.forEach(function(msg, index) {
+                const card = document.createElement("div");
+                card.className = "mensagem-card";
+                card.innerHTML = `
+                    <div class="mensagem-header">
+                        <strong>${msg.nome}</strong>
+                        <span class="mensagem-data">${msg.data}</span>
+                    </div>
+                    <p><strong>Email:</strong> ${msg.email}</p>
+                    <p><strong>Assunto:</strong> ${msg.assunto}</p>
+                    <p><strong>Mensagem:</strong> ${msg.texto}</p>
+                    <button class="btn-remover" onclick="removerMensagem(${index})">🗑️ Remover</button>
+                `;
+                listaMensagens.appendChild(card);
+            });
+        }
+
+        // FUNÇÃO: REMOVER MENSAGEM
+        // Remove uma mensagem da lista
+        function removerMensagem(index) {
+            // Remove a mensagem pelo índice
+            mensagens.splice(index, 1);
+            // Atualiza a tela
+            mostrarMensagens();
+        }
+
+        // EVENTO: ENVIAR FORMULÁRIO
+        // Quando clica no botão "Enviar"
+        formulario.addEventListener("submit", function(evento) {
+            // Impede o formulário de recarregar a página
+            evento.preventDefault();
+
+            // Valida todos os campos
+            const nomeValido = validarNome();
+            const emailValido = validarEmail();
+            const assuntoValido = validarAssunto();
+            const mensagemValida = validarMensagemTexto();
+
+            // Se algum campo está errado, para aqui
+            if (!nomeValido || !emailValido || !assuntoValido || !mensagemValida) {
+                mensagemFormulario.innerHTML = '<p class="erro-geral">❌ Corrija os erros acima.</p>';
+                return;
+            }
+
+            // Cria um objeto com os dados da mensagem
+            const novaMensagem = {
+                id: Date.now(), // ID único baseado no tempo
+                nome: nomeInput.value.trim(),
+                email: emailInput.value.trim(),
+                telefone: telefoneInput.value.trim(),
+                assunto: assuntoSelect.options[assuntoSelect.selectedIndex].text,
+                texto: mensagemTexto.value.trim(),
+                data: new Date().toLocaleString("pt-PT")
+            };
+
+            // Adiciona na lista de mensagens
+            mensagens.push(novaMensagem);
+
+            // Mostra mensagem de sucesso
+            mensagemFormulario.innerHTML = '<p class="sucesso">✅ Mensagem enviada com sucesso!</p>';
+
+            // Limpa o formulário
+            formulario.reset();
+
+            // Atualiza a lista de mensagens
+            mostrarMensagens();
+
+            // Limpa a mensagem de sucesso depois de 3 segundos
+            setTimeout(function() {
+                mensagemFormulario.innerHTML = "";
+            }, 3000);
+        });
+
+        // EVENTOS DE VALIDAÇÃO EM TEMPO REAL
+        // Valida enquanto a pessoa digita
+        nomeInput.addEventListener("blur", validarNome);
+        emailInput.addEventListener("blur", validarEmail);
+        assuntoSelect.addEventListener("change", validarAssunto);
+        mensagemTexto.addEventListener("blur", validarMensagemTexto);
+    </script>
+
+</body>
+</html>

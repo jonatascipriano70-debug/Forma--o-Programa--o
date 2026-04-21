@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--aqui fica o link para o css-->
+    <link rel="stylesheet" href="styles.css">
+    <title>Quiz Animes</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <img 
+                src="img/animes-jpg.webp" 
+                alt="cabeçalho anime"
+                class="cabeçalho">
+            <button class="btn btn-mobile">
+                <i class="fa-solid fa-bars"></i>
+            </button>    
+                
+            <ul id="nav-links">
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+                <li>
+                    <a href="#trending">Em alta</a>
+                </li>
+                <li>
+                    <a href="#about">Sobre nós</a>
+                </li>
+                <li>
+                    <a href="#products">novidades</a>
+                </li>
+            </ul>
+            <a href="Fone: +351 910 094 573" class="btn btn-default">
+                Contatar
+            </a>
+            
+        </nav> <br>
+        <h1>Quiz interativo para FÃ de animes</h1>
+        <p>Teste seus conhecimentos nos animes mais famosos e prove ser um verdadeiro Otaku! </p>
+    </header>
+    <main>
+        <!-- isto é uma introdução -->
+        <section>
+            <h2>Sobre este quiz</h2>
+            <p><strong>O nosso quiz</strong> de fã de anime foi criado para testar os <em>limites do seu conhecimento</em>, indo muito além do básico. <br> Prepare-se para enfrentar perguntas que desafiam a sua memória sobre detalhes sutis, reviravoltas marcantes e curiosidades que só quem realmente presta atenção consegue notar.</p>
+            <p><b>Nesta jornada</b>, exploramos desde os <i>clássicos lendários</i> que definiram gerações até os lançamentos mais recentes que estão dominando as temporadas. <br> Seja você um fã de batalhas épicas de Shonen ou das tramas profundas de Seinen, há um desafio esperando por você em cada etapa.</p>
+            <p>Convide os seus amigos, compare as pontuações e veja quem detém o título de maior conhecedor de animes do grupo. <br> Este é o momento de mostrar que toda aquela maratona valeu a pena e que nenhum detalhe técnico ou referência obscura passa despercebida pelos seus olhos.</p>
+
+            termo japonês usado para descrever pessoas com interesse obsessivo ou paixão profunda por anime, mangá, videogames ou outros aspectos da cultura pop japonesa.
+        </section>
+        <!--Pergunta 1: 3 opções -->
+        <section>
+            <h2>1. Em "Naruto Shippuden", qual é o nome do jutsu proibido do clã Uchiha que permite ao usuário reescrever a realidade, ao custo da sua própria visão? </h2>
+            <form>
+                <input type="radio" value="Amaterasu" 
+                id="p1a" name="pergunta1">
+                <label for="p1a">Amaterasu</label><br>
+                <input type="radio" value="Izanagi" 
+                id="p1b" name="pergunta1">
+                <label for="p1b">Izanagi</label><br>
+                <input type="radio" value="Tsukuyomi" 
+                id="p1c" name="pergunta1">
+                <label for="p1c">Tsukuyomi</label>
+            </form>
+        </section>
+
+        <!-- Pergunta 2: formato texto-->
+        <section>
+            <h2>2. No anime "One Piece", o primeiro membro a se juntar à tripulação de Luffy (Chapéu de Palha) foi ____________. </h2>
+            <form>
+                <input type="text" id="p2" name="pergunta2" placeholder="Digite a resposta certa...">
+            </form>
+        </section>
+
+        <!-- Pergunta 3: campo tipo senha-->
+        <section>
+            <h2>3.Qual é o nome do Shinigami que deixa o Death Note cair no mundo dos humanos?.</h2>
+            <form>
+                <input type="password" id="p3" name="pergunta3" placeholder="Cuidado ao preencher!!!">
+            </form>
+        </section>
+
+        <!-- Pergunta 4: formato data-->
+         <section>
+            <h2>4. Em YuYu Hakusho, em que data o mangá original escrito por Yoshihiro Togashi começou a ser serializado na revista Weekly Shōnen Jump no Japão?</h2>
+            <form>
+                <input type="date" id="p4" name="pergunta4">
+            </form>
+         </section>
+
+         <!-- Pergunta 5: 3 opções 2 respostas corretas -->
+          <section>
+            <h2>5. Em Dragon Ball Z, quais foram os dois primeiros a se transformar em Super Saiyajin durante a saga de Frieza?</h2>
+            <form>
+            <input type="checkbox" id="p5a" name="pergunta5" value="Vegeta">
+            <label for="p5a">Vegeta</label> <br>
+             <input type="checkbox" id="p5a" name="pergunta5" value="Goku">
+            <label for="p5a">Goku</label> <br>
+             <input type="checkbox" id="p5a" name="pergunta5" value="Trunks">
+            <label for="p5a">Trunks</label>
+            </form>
+          </section>
+
+          <!-- Pergunta 6: Upload-->
+           <section>
+                <h2>6. Envie uma imagem do seu personagem favorito de Hunter x Hunter. </h2>
+            <form>
+                <input type="file" id="p6" name="pergunta6">
+            </form>
+           </section>
+
+           <!--Pergunta 7: menu suspenso -->
+           <section>
+                <h2>7. Selecione no menu, qual o anime você mais gostou.</h2>
+                    <form>
+                        <select name="pergunta7" id="p7"> 
+                            <option value="Cowboy Bebop">Cowboy Bebop</option>
+                            <option value="Ghost in the Shell">Ghost in the Shell</option>
+                            <option value="Neon Genesis Evangelion">Neon Genesis Evangelion</option>                           
+                        </select>
+                    </form>
+           </section>
+
+           <!-- Pergunta 8: Adicionar imagem -->
+                <section>
+                    <h2>Qual o nome do personagem abaixo?</h2>
+                    <img src="./img/Seiya.jpg" alt="Digite o nome do Personagem"> <br>
+                    <input type="text" id="p8" name="pergunta8" placeholder="Quem sou eu?">
+                </section>
+
+            <!-- Tabela de Pontuação -->
+                <section>
+                    <h2>Tabela de Pontuação</h2>
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>Pontos</th>
+                                <th>Resultado</th>
+                            </tr>
+
+                        </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0-2</td>
+                                    <td>Tem muito que aprender!</td>
+                                </tr>
+                                <tr>
+                                    <td>3-5</td>
+                                    <td>Pontos de principiante</td>
+                                </tr>
+                                <tr>
+                                    <td>6-7</td>
+                                    <td>Está a nascer um Herói</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Parabéns Otaku!!!</td>
+                                </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2">Pronto para próxima aventura?</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+ </section>
+
+ <!-- Lista de Respostas -->
+    <section>
+        <h2>Lista da verdade </h2>
+        <details>
+            <summary>Clique para ver as respostas</summary>
+        <ol>
+            <li>Amaterasu</li>
+            <li>Zoro</li>
+            <li>Ryuk</li>
+            <li>20-11-1990</li>
+            <li>Vegeta e Goku</li>
+            <li>Todos Certos</li>
+            <li>Todos Corretos</li>
+            <li>Seiya</li>
+        </ol>
+</details>
+    </section>
+
+    <!--Formulário de Feedback-->
+        <section>
+            <h2>E o Feedback? não esqueça!</h2>
+            <form>
+                <fieldset>
+                    <legend>Entre em contacto</legend>
+                <label for="name">Nome</label> <br>
+                <input type="text" id="name" name="name"> <br> <br>
+                <label for="email">Email</label> <br>
+                <input type="email" id="email" name="email"><br> <br> <br>
+                <label for="Comentarios">Comentários</label><br>              
+                <textarea name="comentarios" id="comentarios"
+                rows="6" cols="60" placeholder="Fale um pouco sobre o que achou do nosso Quiz..."></textarea> <br> <br>
+                <button onclick="alert('Obrigado por participar')">Enviar</button>
+                </fieldset>
+            </form>
+        </section>
+
+
+    </main>
+    <footer>
+        <p class="paragrafo-footer">&copy Quiz interativo para FÃ de animes - Todos os direitos reservados </p>
+        <p class="paragrafo-footer">Quer saber mais sobre o criador deste conteúdo? <a href="./img/fotojc.jpeg" target="_blank">clique aqui</a></p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

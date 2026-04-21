@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Funko Store</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        
+        <div class="logo">Funko Store</div>
+         <div class="menu-area"></div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+
+        <div class="carrinho">
+    🛒 <span id="contador">0</span>
+</div>
+    </header>
+
+    
+
+
+    <!-- Área do formulário -->
+    <section class="secao-contato">
+
+        <h2>Fale Connosco</h2>
+
+        <form id="formulario">
+
+            <!-- Nome -->
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" placeholder="Digite o seu nome">
+
+            <!-- Email -->
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Digite o seu email">
+
+            <!-- Mensagem -->
+            <label for="mensagemTexto">Mensagem:</label>
+            <textarea id="mensagemTexto" rows="5" placeholder="Escreva a sua mensagem"></textarea>
+
+            <!-- Botão -->
+            <button type="submit">Enviar</button>
+
+            <!-- Mensagem de erro ou sucesso -->
+            <p id="mensagemFormulario"></p>
+
+            
+
+        </form>
+    </section>
+
+
+    <script>
+        // Procuramos o formulário
+        const formulario = document.getElementById("formulario");
+
+        // Quando o utilizador clicar em enviar
+        formulario.addEventListener("submit", function(event){
+
+            // Impede o envio automático
+            event.preventDefault();
+
+            // Guardamos os valores escritos
+            const nome = document.getElementById("nome").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const mensagemTexto = document.getElementById("mensagemTexto").value.trim();
+            const mensagemFormulario = document.getElementById("mensagemFormulario");
+
+            // Verifica se algum campo está vazio
+            if(nome === "" || email === "" || mensagemTexto === ""){
+                mensagemFormulario.textContent = "Por favor preencha todos os campos.";
+                mensagemFormulario.style.color = "red";
+                return;
+            }
+
+            // Verifica se o email parece válido
+            if(!email.includes("@") || !email.includes(".")){
+                mensagemFormulario.textContent = "Digite um email válido.";
+                mensagemFormulario.style.color = "red";
+                return;
+            }
+
+            // Se tudo estiver correto
+            mensagemFormulario.textContent = "Mensagem enviada com sucesso!";
+            mensagemFormulario.style.color = "green";
+
+            // Limpa os campos
+            formulario.reset();
+        });
+    </script>
+    <footer><p class="paragrafo-footer">&copy Funko Pop para FÃ de animes - Todos os direitos reservados </p></footer>
+</body>
+</html>

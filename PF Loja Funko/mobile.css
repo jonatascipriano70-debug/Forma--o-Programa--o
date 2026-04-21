@@ -1,0 +1,194 @@
+/* MOBILE.CSS - ESTILOS PARA CELULAR */
+
+/* ESTILOS PARA TELAS PEQUENAS (celulares) */
+@media (max-width: 768px) {
+
+    /*(Cabeçalho)*/
+    header {
+        flex-direction: column; /* Empilha os itens verticalmente */
+        align-items: center;
+        padding: 15px;
+        height: auto; /* Altura automática */
+        min-height: 70vh;
+    }
+
+    .header-pequeno {
+        min-height:auto;
+        padding: 15px;
+        background-size:220vw 428px;
+        background-position: -196px;
+    }
+
+    
+
+    /* Logo fica menor */
+    .logo {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    /*MENU DE NAVEGAÇÃO Os links ficam empilhados no celular*/
+    nav ul {
+        flex-direction: column; /* Empilha verticalmente */
+        gap: 10px;
+        text-align: center;
+    }
+
+    nav a {
+        font-size: 1rem;
+    }
+
+    /* CARRINHO */
+    .carrinho {
+        margin-top: 15px;
+    }
+
+    /*INTRODUÇÃO*/
+    .introducao {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin-top: 30px;
+        padding: 0 20px;
+    }
+
+    .introducao h1 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .introducao h2 {
+        font-size: 1.2rem;
+        margin-bottom: 25px;
+    }
+
+    .introducao a {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    /* PRODUTOS Cards ficam empilhados */
+    .produtos {
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px;
+        gap: 30px;
+    }
+
+    .card {
+        width: 90%; /* Ocupa quase toda a largura */
+        max-width: 320px;
+    }
+
+    /* Campos de pesquisa empilhados */
+    .filtros {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .filtros input,
+    .filtros select {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    /*FORMULÁRIO */
+    .secao-contato {
+        padding: 40px 15px;
+    }
+
+    .secao-contato h2 {
+        font-size: 1.5rem;
+    }
+
+    form {
+        width: 95%;
+        padding: 20px;
+    }
+
+    /* MENSAGENS ENVIADAS */
+    .mensagens-enviadas {
+        width: 95%;
+        padding: 0 10px;
+    }
+
+    .mensagem-card {
+        padding: 15px;
+    }
+
+    .mensagem-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    /* MENSAGEM DE FEEDBACK */
+    .mensagem-feedback {
+        left: 10px;
+        right: 10px;
+        text-align: center;
+    }
+
+    /* FOOTER */
+    footer {
+        padding: 15px 10px;
+    }
+
+    .paragrafo-footer {
+        font-size: 0.8rem;
+    }
+}
+
+/* ESTILOS PARA TELAS MUITO PEQUENAS
+   (celulares menores) */
+@media (max-width: 480px) {
+
+    header {
+        min-height: 60vh;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+    }
+
+    .introducao h1 {
+        font-size: 1.3rem;
+    }
+
+    .introducao h2 {
+        font-size: 1rem;
+    }
+
+    .card {
+        width: 95%;
+    }
+
+    .card h3 {
+        font-size: 1.1rem;
+    }
+
+    .preco {
+        font-size: 1.2rem;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    form input,
+    form textarea,
+    form select {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
+    form button {
+        padding: 12px;
+    }
+}

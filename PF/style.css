@@ -1,0 +1,275 @@
+/*escolher cores fixas e facilitar mudanças*/
+:root {
+    --cor-principal: rgb(51, 234, 234);
+    --cor-secundaria: #f5f5f5;
+    --cor-texto: #333;
+    --cor-erro: crimson;
+    --cor-sucesso: green;
+
+    --fonte-titulo: fantasy;
+    --fonte-texto: Arial, sans-serif;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header {
+    width: 100%;
+    height: 80vh;
+    background-image:
+        linear-gradient(rgba(33, 32, 32, 0.6), rgba(101, 99, 99, 0.6)),
+        url('img/capa6.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 30px;
+}
+
+.logo {
+    font-family: fantasy;
+    font-size: 2rem;
+    color: rgb(51, 234, 234);
+    text-shadow: 0 0 10px rgba(10, 14, 14, 0.5);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li {
+    cursor: pointer;
+}
+
+nav a {
+    color: rgb(51, 234, 234);
+    text-shadow: 0 0 10px rgba(10, 14, 14, 0.5);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-family: cursive;
+}
+
+nav a:hover {
+    opacity: .5;
+    text-decoration: underline;
+}
+
+/* bloco central da imagem */
+.introducao {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+}
+
+/* título principal */
+.introducao h1 {
+    font-family: cursive;
+    color: azure;
+    text-shadow: 4px 4px 6px #231d1d;
+    font-weight: 600;
+    font-size: max(20px, 3.2vw);
+    margin-bottom: 320px;
+}
+
+/* subtítulo */
+.introducao h2 {
+    font-family: cursive;
+    color: azure;
+    text-shadow: 4px 4px 6px #382c2c;
+    font-weight: 700;
+    font-size: max(20px, 2.2vw);
+    margin-bottom: 40px;
+}
+
+/* botão */
+.introducao a {
+    display: inline-block;
+    padding: 12px 28px;
+    background: rgb(51, 234, 234);
+    color: black;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+/* secção dos produtos */
+.produtos {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 60px 8%;
+    background: #f5f5f5;
+}
+
+/* card individual */
+.card {
+    position: relative;
+    width: 300px;
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* imagem */
+.card img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+/* badge */
+.badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: crimson;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* título */
+.card h3 {
+    margin-bottom: 10px;
+    font-family: cursive;
+}
+
+/* descrição */
+.card p {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* preço */
+.preco {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #00a8a8;
+}
+
+/* carrinho */
+.carrinho {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* área de pesquisa */
+.filtros {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+    background: #f5f5f5;
+}
+
+.filtros input,
+.filtros select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 220px;
+}
+
+/* botão dos cards */
+.card button {
+    padding: 10px 20px;
+    border: none;
+    background: rgb(51, 234, 234);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.card button:hover {
+    opacity: 0.8;
+}
+
+/* secção do formulário */
+.secao-contato {
+    padding: 60px 20px;
+    background: #f5f5f5;
+    text-align: center;
+}
+
+.secao-contato h2 {
+    margin-bottom: 30px;
+    font-family: cursive;
+    color: #333;
+}
+
+/* formulário */
+form {
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* labels */
+form label {
+    text-align: left;
+    font-weight: bold;
+}
+
+/* inputs */
+form input,
+form textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* botão */
+form button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: rgb(51, 234, 234);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+form button:hover {
+    opacity: 0.8;
+}
+
+/* mensagem */
+#mensagemFormulario {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.menu-area {
+    margin-left:60%; /* empurra tudo para a direita */
+
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}

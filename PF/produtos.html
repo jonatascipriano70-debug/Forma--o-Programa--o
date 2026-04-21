@@ -1,0 +1,155 @@
+ <!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - Funko Store</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="logo">Funko Store</div>
+         <div class="menu-area"></div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+
+        <!-- Mostra quantos produtos estão no carrinho -->
+        <div class="carrinho">
+            🛒 <span id="contador">0</span>
+        </div>
+    </header>
+
+
+
+    <!-- Área da pesquisa e filtro -->
+    <section class="filtros">
+        <!-- Caixa para pesquisar -->
+        <input type="text" id="pesquisa" placeholder="Pesquisar Funko...">
+
+        <!-- Escolher categoria -->
+        <select id="categoria">
+            <option value="todos">Todas categorias</option>
+            <option value="filme">Filme</option>
+            <option value="anime">Anime</option>
+        </select>
+    </section>
+
+
+    <!-- Produtos -->
+    <main class="produtos">
+
+        <!-- Produto 1 -->
+        <div class="card" data-categoria="filme">
+            <span class="badge">NOVO</span>
+            <img src="img/funko1.png" alt="Harry Potter">
+            <h3>Harry Potter</h3>
+            <p>Edição especial colecionável.</p>
+            <p class="preco">€9.99</p>
+            <button onclick="adicionarCarrinho('Harry Potter')">Adicionar</button>
+        </div>
+
+        <!-- Produto 2 -->
+        <div class="card" data-categoria="filme">
+            <span class="badge">NOVO</span>
+            <img src="img/Funko3.png" alt="Mike">
+            <h3>Funko Mike</h3>
+            <p>Lançamento exclusivo 2026.</p>
+            <p class="preco">€14.99</p>
+            <button onclick="adicionarCarrinho('Funko Mike')">Adicionar</button>
+        </div>
+
+        <!-- Produto 3 -->
+        <div class="card" data-categoria="anime">
+            <span class="badge">NOVO</span>
+            <img src="img/funko4.png" alt="Luffy">
+            <h3>Funko Luffy</h3>
+            <p>Lançamento exclusivo 2026.</p>
+            <p class="preco">€24.99</p>
+            <button onclick="adicionarCarrinho('Funko Luffy')">Adicionar</button>
+        </div>
+
+    </main>
+
+
+    <script>
+        // Guarda os produtos do carrinho na memória
+        let carrinho = [];
+
+        // Elementos do HTML
+        const pesquisa = document.getElementById("pesquisa");
+        const categoria = document.getElementById("categoria");
+        const cards = document.querySelectorAll(".card");
+        const contador = document.getElementById("contador");
+
+
+        // Função para pesquisar e filtrar
+        function filtrarProdutos() {
+
+            // texto escrito na pesquisa
+            const texto = pesquisa.value.toLowerCase();
+
+            // categoria escolhida
+            const filtroCategoria = categoria.value;
+
+            // percorre todos os cards
+            cards.forEach(card => {
+
+                const nomeProduto = card.querySelector("h3").textContent.toLowerCase();
+                const categoriaProduto = card.dataset.categoria;
+
+                const combinaTexto = nomeProduto.includes(texto);
+                const combinaCategoria = filtroCategoria === "todos" || categoriaProduto === filtroCategoria;
+
+                if (combinaTexto && combinaCategoria) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                    
+                }
+            });
+            // Verifica se veio produto da página home
+window.addEventListener("load", function(){
+
+    const produtoGuardado = localStorage.getItem("produtoSelecionado");
+
+    if(produtoGuardado){
+        adicionarCarrinho(produtoGuardado);
+
+        // limpa para não repetir
+        localStorage.removeItem("produtoSelecionado");
+    }
+});
+        }
+
+
+        // Adiciona produto ao carrinho
+        function adicionarCarrinho(produto) {
+            carrinho.push(produto);
+
+            // Atualiza número do carrinho
+            contador.textContent = carrinho.length;
+
+            alert(produto + " foi adicionado ao carrinho!");
+        }
+
+
+        // Sempre que o utilizador escreve
+        pesquisa.addEventListener("input", filtrarProdutos);
+
+        // Sempre que muda a categoria
+        categoria.addEventListener("change", filtrarProdutos);
+
+    </script>
+    <footer><p class="paragrafo-footer">&copy Funko Pop para FÃ de animes - Todos os direitos reservados </p></footer>
+</body>
+</html>
